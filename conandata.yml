@@ -1,4 +1,4 @@
-# sources:
-#   "1.0.0":
-#     url: "https://github.com/fmtlib/fmt/archive/9.0.0.tar.gz"
-#     sha256: "9a1e0e9e843a356d65c7604e2c8bf9402b50fe294c355de0095ebd42fb9bd2c5"
+sources:
+  "1.0.0":
+    url: "https://github.com/DeepForge-Tech/Gliese/archive/refs/tags/v1.0.0.tar.gz"
+    sha256: "40529876ec26bdada2156768fa18f83b10762dab95f86aa4cc8061fd48a53be6"
