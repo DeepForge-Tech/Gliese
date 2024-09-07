@@ -400,7 +400,7 @@
     },
     {
       "name": "GCC_Debug_ARMv7",
-      "configurePreset": "GCC_Debug_ARM"
+      "configurePreset": "GCC_Debug_ARMv7"
     },
     {
       "name": "GCC_Release_ARMv7",
