@@ -321,8 +321,8 @@
       }
     },
     {
-      "name": "GCC_Debug_ARM",
-      "displayName": "GCC_Debug_ARM",
+      "name": "GCC_Debug_ARMv7",
+      "displayName": "GCC_Debug_ARMv7",
       "description": "Preset for building ARM 32-bit in Debug mode with GCC",
       "generator": "Ninja",
       "architecture": {
