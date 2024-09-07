@@ -238,7 +238,8 @@
         "CMAKE_TOOLCHAIN_FILE": "",
         "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++",
-        "GLIESE_ARCHITECTURE ": "32",
+        "GLIESE_ARCHITECTURE ": "ON", // Additional flag for 32-bit compilation
+        // "CMAKE_CXX_FLAGS": "ON", // Additional flag for 32-bit compilation
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
         "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
       }
@@ -257,7 +258,8 @@
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++",
-        "GLIESE_ARCHITECTURE ": "32",
+        "GLIESE_ARCHITECTURE ": "ON", // Additional flag for 32-bit compilation
+        // "CMAKE_CXX_FLAGS": "ON", // Additional flag for 32-bit compilation
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
         "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
       }
@@ -312,7 +314,8 @@
         "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++",
-        "GLIESE_ARCHITECTURE ": "32",
+        "GLIESE_ARCHITECTURE ": "ON", // Additional flag for 32-bit compilation
+        // "CMAKE_CXX_FLAGS": "ON", // Additional flag for 32-bit compilation
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
         "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
       }
@@ -331,7 +334,8 @@
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++",
-        "GLIESE_ARCHITECTURE ": "32",
+        "GLIESE_ARCHITECTURE ": "ON", // Additional flag for 32-bit compilation
+        // "CMAKE_CXX_FLAGS": "ON", // Additional flag for 32-bit compilation
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
         "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
       }

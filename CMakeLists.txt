@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 option(BUILD_STATIC_GLIESE "Build static library Gliese" OFF)
 option(BUILD_RUNTIME_STATIC "Build static runtime" OFF)
-option(GLIESE_ARCHITECTURE "64")
+option(GLIESE_ARCHITECTURE_64 "Build library for 64-bit systems" ON)
 
 if (BUILD_STATIC_GLIESE OR NOT BUILD_SHARED_LIBS)
   set(Boost_USE_STATIC_LIBS ON)
@@ -167,7 +167,7 @@ if(WIN32)
   add_compile_options("/await:strict")
 endif()
 # Link the target with the libraries
-if((GLIESE_ARCHITECTURE MATCHES "32" OR GLIESE_ARCHITECTURE MATCHES "86") AND GLIESE_ARCHITECTURE MATCHES "64")
+if(GLIESE_ARCHITECTURE_64)
 set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 endif()
 
