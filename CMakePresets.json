@@ -270,7 +270,7 @@
       "description": "Preset for building ARM64 (64-bit) in Debug mode with GCC",
       "generator": "Ninja",
       "architecture": {
-        "value": "ARM64",
+        "value": "ARM",
         "strategy": "external"
       },
       "binaryDir": "${sourceDir}/build/",
@@ -288,7 +288,7 @@
       "description": "Preset for building ARM64 (64-bit) with GCC",
       "generator": "Ninja",
       "architecture": {
-        "value": "ARM64",
+        "value": "ARM",
         "strategy": "external"
       },
       "binaryDir": "${sourceDir}/build/",
