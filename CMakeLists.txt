@@ -74,8 +74,17 @@ if (MSVC)
 endif()
 project(Gliese)
 
-set(BUILD_SHARED_LIBS ON)
-set(CMAKE_CXX_STANDARD 17)
+if(WIN32)
+  if (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 19.12.25835)
+    set(CMAKE_CXX20_STANDARD_COMPILE_OPTION "-std:c++latest")
+    set(CMAKE_CXX20_EXTENSION_COMPILE_OPTION "-std:c++latest")
+  elseif()
+    set(CMAKE_CXX_STANDARD 17)
+  endif()
+  
+else()
+set(CMAKE_CXX_STANDARD 20)
+endif()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Include conan paths to locate dependencies
@@ -90,6 +99,7 @@ endif()
 
 # Include the downloaded conan.cmake
 include(${CMAKE_BINARY_DIR}/conan.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/MacroFunctions.cmake)
 
 # Install dependencies via Conan
 conan_cmake_install(PATH_OR_REFERENCE ${CMAKE_SOURCE_DIR}
@@ -144,11 +154,16 @@ FetchContent_MakeAvailable(Boost)
 
 # Add Boost to the list of libraries
 list(APPEND LIBRARIES Boost::asio Boost::system Boost::context Boost::coroutine Boost::beast)
-
+include_directories(${Boost_INCLUDE_LIBRARIES})
 if(BUILD_STATIC_GLIESE OR NOT BUILD_SHARED_LIBS)
   add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
 else()
   add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
+endif()
+if(WIN32)
+  apply_global_cxx_flags_to_all_targets()
+  remove_flag_from_target(Gliese ${SOURCE_FILES} "/await")
+  add_compile_options("/await:strict")
 endif()
 # Link the target with the libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBRARIES})

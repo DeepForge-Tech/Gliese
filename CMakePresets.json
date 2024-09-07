@@ -153,12 +153,35 @@
     "buildPresets": [
     {
         "name": "GCC_Debug_x64",
-        "hidden": true,
         "configurePreset": "GCC_Debug_x64"
     },
     {
       "name": "GCC_Debug_x32",
       "configurePreset": "GCC_Debug_x64"
+    },
+    {
+        "name": "GCC_Release_x64",
+        "configurePreset": "GCC_Release_x64"
+    },
+    {
+      "name": "GCC_Release_x32",
+      "configurePreset": "GCC_Release_x64"
+    },
+    {
+        "name": "MSBuild_Release_x64",
+        "configurePreset": "MSBuild_Release_x64"
+    },
+    {
+      "name": "MSBuild_Release_x32",
+      "configurePreset": "MSBuild_Release_x32"
+    },
+    {
+        "name": "MSBuild_Debug_x64",
+        "configurePreset": "MSBuild_Debug_x64"
+    },
+    {
+      "name": "MSBuild_Debug_x32",
+      "configurePreset": "MSBuild_Debug_x32"
     }
   ]
 }

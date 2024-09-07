@@ -9,6 +9,7 @@
 #include <boost/asio/co_spawn.hpp>
 #include <boost/asio/steady_timer.hpp>
 #include <boost/asio/ip/tcp.hpp>
+#include <boost/asio/awaitable.hpp>
 #include <boost/asio/use_awaitable.hpp>
 #include <Gliese/HttpClient/HttpClient.hpp>
 #include <Gliese/HttpsClient/HttpsClient.hpp>
