@@ -276,8 +276,8 @@
       "binaryDir": "${sourceDir}/build/",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "aarch64-linux-gnu-gcc", // ARM64 GCC compiler
-        "CMAKE_CXX_COMPILER": "aarch64-linux-gnu-g++", // ARM64 G++ compiler
+        "CMAKE_C_COMPILER": "gcc", // ARM64 GCC compiler
+        "CMAKE_CXX_COMPILER": "g++", // ARM64 G++ compiler
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
         "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
       }
@@ -294,48 +294,8 @@
       "binaryDir": "${sourceDir}/build/",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "aarch64-linux-gnu-gcc", // ARM64 GCC compiler
-        "CMAKE_CXX_COMPILER": "aarch64-linux-gnu-g++", // ARM64 G++ compiler
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
-        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
-      }
-    },
-    {
-      "name": "GCC_Release_ARMv7",
-      "displayName": "GCC_Release_ARMv7",
-      "description": "Preset for building ARM 32-bit with GCC",
-      "generator": "Ninja",
-      "architecture": {
-        "value": "ARM",
-        "strategy": "external"
-      },
-      "binaryDir": "${sourceDir}/build/",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_C_COMPILER": "aarch64-linux-gnu-gcc",
-        "CMAKE_CXX_COMPILER": "aarch64-linux-gnu-g++",
-        "CMAKE_C_FLAGS": "-m32", // Additional flag for 32-bit compilation
-        "CMAKE_CXX_FLAGS": "-m32", // Additional flag for 32-bit compilation
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
-        "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
-      }
-    },
-    {
-      "name": "GCC_Debug_ARM",
-      "displayName": "GCC_Debug_ARM",
-      "description": "Preset for building ARM 32-bit in Debug mode with GCC",
-      "generator": "Ninja",
-      "architecture": {
-        "value": "ARM",
-        "strategy": "external"
-      },
-      "binaryDir": "${sourceDir}/build/",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_C_COMPILER": "aarch64-linux-gnu-gcc",
-        "CMAKE_CXX_COMPILER": "aarch64-linux-gnu-g++",
-        "CMAKE_C_FLAGS": "-m32", // Additional flag for 32-bit compilation
-        "CMAKE_CXX_FLAGS": "-m32", // Additional flag for 32-bit compilation
+        "CMAKE_C_COMPILER": "gcc", // ARM64 GCC compiler
+        "CMAKE_CXX_COMPILER": "g++", // ARM64 G++ compiler
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
         "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
       }
