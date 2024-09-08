@@ -314,11 +314,12 @@
           "CMAKE_BUILD_TYPE": "Release",
           "CMAKE_C_COMPILER": "arm-linux-gnueabihf-gcc",
           "CMAKE_CXX_COMPILER": "arm-linux-gnueabihf-g++",
-          "GLIESE_ARCHITECTURE_64 ": "ON", 
+          "GLIESE_ARCHITECTURE_64 ": "OFF", 
           "CMAKE_SYSTEM_PROCESSOR":"arm",
           "BOOST_ARCHITECTURE":"arm",
           "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
-          "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
+          "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake",
+          "CMAKE_TOOLCHAIN_FILE":"./cmake/LinuxGCC_armhf.cmake"
         }
       },
       {
@@ -335,11 +336,12 @@
           "CMAKE_BUILD_TYPE": "Debug",
           "CMAKE_C_COMPILER": "arm-linux-gnueabihf-gcc",
           "CMAKE_CXX_COMPILER": "arm-linux-gnueabihf-g++",
-          "GLIESE_ARCHITECTURE_64 ": "ON",
+          "GLIESE_ARCHITECTURE_64 ": "OFF",
           "CMAKE_SYSTEM_PROCESSOR":"arm",
           "BOOST_ARCHITECTURE":"arm",
           "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
-          "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake"
+          "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "./cmake/conan_provider.cmake",
+          "CMAKE_TOOLCHAIN_FILE":"./cmake/LinuxGCC_armhf.cmake"
         }
       }
     ],
