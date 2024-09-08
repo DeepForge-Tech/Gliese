@@ -312,8 +312,8 @@
         "binaryDir": "${sourceDir}/build/",
         "cacheVariables": {
           "CMAKE_BUILD_TYPE": "Release",
-          "CMAKE_C_COMPILER": "gcc",
-          "CMAKE_CXX_COMPILER": "g++",
+          "CMAKE_C_COMPILER": "arm-linux-gnueabihf-gcc",
+          "CMAKE_CXX_COMPILER": "arm-linux-gnueabihf-g++",
           "GLIESE_ARCHITECTURE_64 ": "ON", // Additional flag for 32-bit compilation
           // "CMAKE_CXX_FLAGS": "ON", // Additional flag for 32-bit compilation
           "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
@@ -332,8 +332,8 @@
         "binaryDir": "${sourceDir}/build/",
         "cacheVariables": {
           "CMAKE_BUILD_TYPE": "Debug",
-          "CMAKE_C_COMPILER": "gcc",
-          "CMAKE_CXX_COMPILER": "g++",
+          "CMAKE_C_COMPILER": "arm-linux-gnueabihf-gcc",
+          "CMAKE_CXX_COMPILER": "arm-linux-gnueabihf-g++",
           "GLIESE_ARCHITECTURE_64 ": "ON", // Additional flag for 32-bit compilation
           // "CMAKE_CXX_FLAGS": "ON", // Additional flag for 32-bit compilation
           "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/",
