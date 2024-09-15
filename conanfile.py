@@ -2,12 +2,15 @@ from conan import ConanFile
 from conan import tools
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conan.tools.microsoft import VCVars
+from conan.tools.files import apply_conandata_patches, copy, export_conandata_patches, get, replace_in_file, save
 from conans.errors import ConanInvalidConfiguration
 import os
+import textwrap
 
-class Gliese(ConanFile):
-    name = "Gliese"
-    version = "1.0"
+class GlieseConan(ConanFile):
+    name = "gliese"
+    description = "Gliese - C++ library for send HTTP-requests"
+    version = "0.1"
     settings = "os", "compiler", "build_type", "arch"
     exports_source = "*.patch"
     exports_sources = "CMakeLists.txt", "src/*", "include/*"
@@ -15,6 +18,10 @@ class Gliese(ConanFile):
     default_options = {"shared": True, "fPIC": True}
     cppstd = "20"
     generators = "CMakeDeps"
+    license = "GNU GENERAL PUBLIC LICENSE"
+    homepage = "https://github.com/DeepForge-Tech/Gliese.git"
+    url = "https://github.com/conan-io/conan-center-index"
+
     def __init__(self, display_name="Kepler"):
         super().__init__(display_name)
         self.current_dir = os.path.dirname(__file__)
@@ -41,6 +48,7 @@ class Gliese(ConanFile):
 
     def generate(self):
         tc = CMakeToolchain(self,generator="Ninja")
+        tc.parallel = False
         tc.generate()
     def config_options(self):
         if self.settings.os == "Windows":
@@ -72,11 +80,13 @@ class Gliese(ConanFile):
             print(src_patch_file)
 
     def requirements(self):
-        self.requires("fmt/11.0.2")
-        self.requires("andreasbuhr-cppcoro/cci.20230629")
-        self.requires("jsoncpp/1.9.5")
-        self.requires("openssl/3.3.1")
-        self.requires("zlib/1.3.1")
+        for library,type in self.libraries.items():
+            self.requires(library)
+        # self.requires("fmt/11.0.2")
+        # self.requires("andreasbuhr-cppcoro/cci.20230629")
+        # self.requires("jsoncpp/1.9.5")
+        # self.requires("openssl/3.3.1")
+        # self.requires("zlib/1.3.1")
         # self.requires("boost/1.86.0")
     
     def build(self):
@@ -97,9 +107,40 @@ class Gliese(ConanFile):
         self.copy("*.so",dst="lib",keep_path=False)
         self.copy("*.dylib",dst="lib",keep_path=False)
         self.copy("*.dll",dst="lib",keep_path=False)
+        # TODO: to remove in conan v2 once legacy generators removed
+        self._create_cmake_module_alias_targets(
+            os.path.join(self.package_folder, self._module_file_rel_path),
+            {
+                "Gliese": "Gliese",
+                "Gliese": "Gliese"
+            }
+        )
+
+    def _create_cmake_module_alias_targets(self, module_file, targets):
+        content = ""
+        for alias, aliased in targets.items():
+            content += textwrap.dedent(f"""\
+                if(TARGET {aliased} AND NOT TARGET {alias})
+                    add_library({alias} INTERFACE IMPORTED)
+                    set_property(TARGET {alias} PROPERTY INTERFACE_LINK_LIBRARIES {aliased})
+                endif()
+            """)
+        save(self, module_file, content)
+
+    @property
+    def _module_file_rel_path(self):
+        return os.path.join("lib", "cmake", f"conan-official-{self.name}-targets.cmake")
     
     def package_info(self):
-        print("Package Info")
+        self.cpp_info.set_property("cmake_file_name", "Gliese")
+        self.cpp_info.set_property("cmake_target_name", "Gliese")
+        self.cpp_info.set_property(
+            "cmake_target_aliases",
+            ["Gliese"],
+        )
+        self.cpp_info.set_property("pkg_config_name", "Gliese")
         self.cpp_info.includedirs = ["include"]
         self.cpp_info.libs = ["Gliese"]
         self.cpp_info.system_libs.append("zlib")
+        self.cpp_info.build_modules["cmake_find_package"] = [self._module_file_rel_path]
+        self.cpp_info.build_modules["cmake_find_package_multi"] = [self._module_file_rel_path]

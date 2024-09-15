@@ -4,6 +4,18 @@ option(BUILD_STATIC_GLIESE "Build static library Gliese" OFF)
 option(BUILD_RUNTIME_STATIC "Build static runtime" OFF)
 option(GLIESE_ARCHITECTURE_64 "Build library for 64-bit systems" ON)
 
+# find_package (Python3 REQUIRED)
+# if(Python3_FOUND)
+#   if(BUILD_STATIC_GLIESE)
+#     set(type_library "static")
+#   else()
+#     set(type_library "shared")
+#   endif()
+#   set(command "python ConfigureProject.py --project=\"Gliese\" --type_library=\"${type_library}\"")
+#   execute_process(COMMAND ${command}
+#     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ConfigureTools)
+# endif()
+
 if (BUILD_STATIC_GLIESE OR NOT BUILD_SHARED_LIBS)
   set(Boost_USE_STATIC_LIBS ON)
   set(Boost_ALL_DYN_LINK OFF)
